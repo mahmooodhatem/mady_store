@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:untitled6/bottom_bar.dart';
 import 'package:untitled6/home_page.dart';
-import 'package:untitled6/name_page.dart';
 import 'package:untitled6/profile_page.dart';
 import 'package:untitled6/register.dart';
 import 'package:untitled6/shared.dart';

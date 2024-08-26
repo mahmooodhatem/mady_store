@@ -39,7 +39,7 @@ class ProductsModel {
 class Product {
   final int? id;
   final String? title;
-  final Category? category;
+  final String? category;
   final double? price;
   final String? thumbnail;
   final String? description;
@@ -56,7 +56,7 @@ class Product {
   factory Product.fromJson(Map<String, dynamic> json) => Product(
     id: json["id"],
     title: json["title"],
-    category: categoryValues.map[json["category"]]!,
+    category: json["category"],
     price: json["price"]?.toDouble(),
     thumbnail: json["thumbnail"],
     description: json["description"],
@@ -65,35 +65,35 @@ class Product {
   Map<String, dynamic> toJson() => {
     "id": id,
     "title": title,
-    "category": categoryValues.reverse[category],
+    "category": category,
     "price": price,
     "thumbnail": thumbnail,
     "description": description,
   };
 }
 
-enum Category {
-  BEAUTY,
-  FRAGRANCES,
-  FURNITURE,
-  GROCERIES
-}
-
-final categoryValues = EnumValues({
-  "beauty": Category.BEAUTY,
-  "fragrances": Category.FRAGRANCES,
-  "furniture": Category.FURNITURE,
-  "groceries": Category.GROCERIES
-});
-
-class EnumValues<T> {
-  Map<String, T> map;
-  late Map<T, String> reverseMap;
-
-  EnumValues(this.map);
-
-  Map<T, String> get reverse {
-    reverseMap = map.map((k, v) => MapEntry(v, k));
-    return reverseMap;
-  }
-}
+// enum Category {
+//   BEAUTY,
+//   FRAGRANCES,
+//   FURNITURE,
+//   GROCERIES
+// }
+//
+// final categoryValues = EnumValues({
+//   "beauty": Category.BEAUTY,
+//   "fragrances": Category.FRAGRANCES,
+//   "furniture": Category.FURNITURE,
+//   "groceries": Category.GROCERIES
+// });
+//
+// class EnumValues<T> {
+//   Map<String, T> map;
+//   late Map<T, String> reverseMap;
+//
+//   EnumValues(this.map);
+//
+//   Map<T, String> get reverse {
+//     reverseMap = map.map((k, v) => MapEntry(v, k));
+//     return reverseMap;
+//   }
+// }

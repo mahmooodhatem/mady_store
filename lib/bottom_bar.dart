@@ -11,16 +11,20 @@ import 'home_page.dart';
 class HomeLayout extends StatefulWidget {
   const HomeLayout({super.key});
 
+
+
   @override
   State<HomeLayout> createState() => _HomeLayoutState();
 }
 
 class _HomeLayoutState extends State<HomeLayout> {
+
+
   int currentIndex = 0;
   List pages = [
     const HomePage(),
     const ProfilePage(),
-     CategoryPage(),
+      const CategoryPage(),
   ];
   @override
   Widget build(BuildContext context) {

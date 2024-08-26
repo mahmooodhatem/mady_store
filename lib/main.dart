@@ -1,10 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:untitled6/bottom_bar.dart';
-import 'package:untitled6/home_page.dart';
 import 'package:untitled6/login.dart';
-
 import 'introduction_screen.dart';
 
 bool show = true;

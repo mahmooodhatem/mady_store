@@ -1,23 +1,27 @@
-import 'package:untitled6/beauty_model.dart';
-import 'package:untitled6/build_beauty.dart';
-
+import 'build_products.dart';
+import 'products_model.dart';
 import 'api_provider.dart';
 import 'package:flutter/material.dart';
 
-class Page1 extends StatefulWidget {
-  const Page1({super.key});
+class ProductsShow extends StatefulWidget {
+
+   const ProductsShow( {super.key, required this.category});
+
+  final String category;
 
   @override
-  State<Page1> createState() => _MessengerScreenState();
+  State<ProductsShow> createState() => _Page1State();
 }
 
-class _MessengerScreenState extends State<Page1> {
-  BeautyModel? beautyList;
+class _Page1State extends State<ProductsShow> {
+  ProductsModel? productsList;
 
   bool isLoading = true;
 
-  getBeautyProductsFromApi()async{
-    beautyList = await ApiProvider().getBeauty();
+  ApiProvider apiProvider =ApiProvider();
+
+  getAllProductsFromApi()async{
+    productsList = await ApiProvider().getProductFromList(widget.category);
     setState(() {
       isLoading = false;
     });
@@ -27,7 +31,7 @@ class _MessengerScreenState extends State<Page1> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    getBeautyProductsFromApi();
+    getAllProductsFromApi();
   }
 
   @override
@@ -40,10 +44,10 @@ class _MessengerScreenState extends State<Page1> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          "BEAUTY",
+        title: Text(
+          widget.category,
           style:
-          TextStyle(color: Colors.deepPurple, fontWeight: FontWeight.bold),
+          const TextStyle(color: Colors.deepPurple, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
         leading: IconButton(
@@ -65,8 +69,8 @@ class _MessengerScreenState extends State<Page1> {
               GridView.builder(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
-                itemBuilder: (context,index) => BuildBeauty(product: beautyList!.products![index]),
-                itemCount: beautyList!.products!.length,
+                itemBuilder: (context,index) => BuildProducts(product: productsList!.products![index]),
+                itemCount: productsList!.products!.length,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, mainAxisSpacing: 5,childAspectRatio:2, mainAxisExtent: 300, ),
               )
             ],
